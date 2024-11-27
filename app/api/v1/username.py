@@ -1,4 +1,4 @@
-from http.client import HTTPException
+from fastapi import HTTPException
 
 from fastapi import APIRouter, Depends
 from sqlmodel import Session
@@ -11,8 +11,8 @@ router = APIRouter()
 
 
 @router.get('/username/{username}')
-def get_by_username(username: str, session: Session = Depends(get_session)):
+async def get_by_username(username: str, session: Session = Depends(get_session)):
     user = get_user_by_username(session, username)
     if not user:
-        raise HTTPException(status_code=404, detail="Username not found")
+        raise HTTPException(404, "Username not found")
     return user
