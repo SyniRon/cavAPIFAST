@@ -44,7 +44,7 @@ class xf_nf_rosters_roster_position(SQLModel, table=True):
     roster_id: int = Field(primary_key=True)
     position_id: int
 
-class xf_nf_roxters_service_record(SQLModel, table=True):
+class xf_nf_rosters_service_record(SQLModel, table=True):
     record_id: int = Field(primary_key=True)
     relation_id: int
     details: str
