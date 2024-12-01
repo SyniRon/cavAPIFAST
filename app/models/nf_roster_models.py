@@ -20,7 +20,7 @@ class xf_nf_rosters_award(SQLModel, table=True):
 
 class xf_nf_rosters_field_value(SQLModel, table=True):
     relation_id: int = Field(primary_key=True)
-    field_id: str
+    field_id: str = Field(primary_key=True)
     field_value: str
 
 class xf_nf_rosters_position(SQLModel, table=True):
