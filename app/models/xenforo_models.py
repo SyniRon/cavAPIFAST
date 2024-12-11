@@ -29,9 +29,9 @@ class XfNfRostersUser(SQLModel, table=True):
     user_id: int = Field(foreign_key="xf_user.user_id")
     real_name: str
     position_id: int
-    secondary_position_ids: int
+    secondary_position_ids: bytes
     rank_id: int
-    custom_fields: str
+    custom_fields: bytes
     # Relationships
     user: "XfUser" = Relationship(back_populates="roster")
     fields: list["XfNfRostersFieldValue"] = Relationship(back_populates="roster_user")
@@ -56,7 +56,7 @@ class XfNfRostersFieldValue(SQLModel, table=True):
     __tablename__ = 'xf_nf_rosters_field_value'
     # Columns
     relation_id: int = Field(primary_key=True, foreign_key="xf_nf_rosters_user.relation_id")
-    field_id: str = Field(primary_key=True)
+    field_id: bytes = Field(primary_key=True)
     field_value: str
     # Relationships
     roster_user: "XfNfRostersUser" = Relationship(back_populates="fields")
