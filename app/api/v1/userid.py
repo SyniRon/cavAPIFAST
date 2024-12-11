@@ -23,4 +23,4 @@ async def get_by_id(user_id: int, session: Session = Depends(get_session)):
     service_record = get_service_record_by_relation_id(session, roster.relation_id)
     awards = get_awards_by_relation_id(session, roster.relation_id)
     # TODO: build out return to match response model
-    return {"joinDate": join_date, "promoDate": promo_date, "serviceRecord": service_record}
+    return {"joinDate": join_date, "promoDate": promo_date, "serviceRecord": service_record, "awards": awards}
