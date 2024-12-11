@@ -1,5 +1,4 @@
 from sqlmodel import SQLModel, Field, Relationship
-from typing import List, Optional
 
 # User Models
 class XfUser(SQLModel, table=True):
@@ -8,8 +7,8 @@ class XfUser(SQLModel, table=True):
     user_id: int = Field(primary_key=True)
     username: str
     # Relationships
-    roster: Optional["XfNfRostersUser"] = Relationship(back_populates="user")
-    connected_account: List["XfUserConnectedAccount"] = Relationship(back_populates="user")
+    roster: "XfNfRostersUser" = Relationship(back_populates="user")
+    connected_account: list["XfUserConnectedAccount"] = Relationship(back_populates="user")
 
 class XfUserConnectedAccount (SQLModel, table = True):
     __tablename__ = 'xf_user_connected_account'
@@ -18,7 +17,7 @@ class XfUserConnectedAccount (SQLModel, table = True):
     provider: str
     provider_key: str
     # Relationships
-    user: Optional["XfUser"] = Relationship(back_populates="connected_account")
+    user: "XfUser" = Relationship(back_populates="connected_account")
 
 
 # Roster Models
@@ -34,10 +33,10 @@ class XfNfRostersUser(SQLModel, table=True):
     rank_id: int
     custom_fields: str
     # Relationships
-    user: Optional["XfUser"] = Relationship(back_populates="roster")
-    fields: List["XfNfRostersFieldValue"] = Relationship(back_populates="roster_user")
-    service_records: List["XfNfRostersServiceRecord"] = Relationship(back_populates="roster_user")
-    awards: List["XfNfRostersUserAward"] = Relationship(back_populates="roster_user")
+    user: "XfUser" = Relationship(back_populates="roster")
+    fields: list["XfNfRostersFieldValue"] = Relationship(back_populates="roster_user")
+    service_records: list["XfNfRostersServiceRecord"] = Relationship(back_populates="roster_user")
+    awards: list["XfNfRostersUserAward"] = Relationship(back_populates="roster_user")
 
 class XfNfRosters(SQLModel, table=True):
     __tablename__ = 'xf_nf_rosters'
@@ -60,7 +59,7 @@ class XfNfRostersFieldValue(SQLModel, table=True):
     field_id: str = Field(primary_key=True)
     field_value: str
     # Relationships
-    roster_user: Optional["XfNfRostersUser"] = Relationship(back_populates="fields")
+    roster_user: "XfNfRostersUser" = Relationship(back_populates="fields")
 
 class XfNfRostersPosition(SQLModel, table=True):
     __tablename__ = 'xf_nf_rosters_position'
@@ -108,7 +107,7 @@ class XfNfRostersServiceRecord(SQLModel, table=True):
     citation_date: int
     record_type_id: int
     # Relationships
-    roster_user: Optional["XfNfRostersUser"] = Relationship(back_populates="service_records")
+    roster_user: "XfNfRostersUser" = Relationship(back_populates="service_records")
 
 class XfNfRostersUserAward(SQLModel, table=True):
     __tablename__ = 'xf_nf_rosters_user_award'
@@ -120,5 +119,5 @@ class XfNfRostersUserAward(SQLModel, table=True):
     award_date: int
     citation_date: int
     # Relationships
-    roster_user: Optional["XfNfRostersUser"] = Relationship(back_populates="awards")
+    roster_user: "XfNfRostersUser" = Relationship(back_populates="awards")
 
