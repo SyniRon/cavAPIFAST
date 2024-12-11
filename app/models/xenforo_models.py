@@ -2,18 +2,21 @@ from sqlmodel import SQLModel, Field
 
 
 # User Models
-class xf_user(SQLModel, table=True):
+class XfUser(SQLModel, table=True):
+    __tablename__ = 'xf_user'
     user_id: int = Field(primary_key=True)
     username: str
 
-class xf_user_connected_account (SQLModel, Table = True):
+class XfUserConnectedAccount (SQLModel, Table = True):
+    __tablename__ = 'xf_user_connected_account'
     user_id: int = Field(primary_key=True)
     provider: str
     provider_key: str
 
 
 # Roster Models
-class xf_nf_rosters_user(SQLModel, table=True):
+class XfNfRostersUser(SQLModel, table=True):
+    __tablename__ = 'xf_nf_rosters_user'
     relation_id: int = Field(primary_key=True)
     roster_id: int
     user_id: int
@@ -23,41 +26,50 @@ class xf_nf_rosters_user(SQLModel, table=True):
     rank_id: int
     custom_fields: str
 
-class xf_nf_rosters(SQLModel, table=True):
+class XfNfRosters(SQLModel, table=True):
+    __tablename__ = 'xf_nf_rosters'
     roster_id: int = Field(primary_key=True)
     title: str
 
-class xf_nf_rosters_award(SQLModel, table=True):
+class XfNfRostersAward(SQLModel, table=True):
+    __tablename__ = 'xf_nf_rosters_award'
     award_id: int = Field(primary_key=True)
     title: str
 
-class xf_nf_rosters_field_value(SQLModel, table=True):
+class XfNfRostersFieldValue(SQLModel, table=True):
+    __tablename__ = 'xf_nf_rosters_field_value'
     relation_id: int = Field(primary_key=True)
     field_id: str = Field(primary_key=True)
     field_value: str
 
-class xf_nf_rosters_position(SQLModel, table=True):
+class XfNfRostersPosition(SQLModel, table=True):
+    __tablename__ = 'xf_nf_rosters_position'
     position_id: int = Field(primary_key=True)
     position_title: str
     position_group_id: int
 
-class xf_nf_rosters_position_group(SQLModel, table=True):
+class XfNfRostersPositionGroup(SQLModel, table=True):
+    __tablename__ = 'xf_nf_rosters_position_group'
     position_group_id: int = Field(primary_key=True)
     title: str
 
-class xf_nf_rosters_rank(SQLModel, table=True):
+class XfNfRostersRank(SQLModel, table=True):
+    __tablename__ = 'xf_nf_rosters_rank'
     rank_id: int = Field(primary_key=True)
     title: str
 
-class xf_nf_rosters_record_type(SQLModel, table=True):
+class XfNfRostersRecordType(SQLModel, table=True):
+    __tablename__ = 'xf_nf_rosters_record_type'
     record_type_id: int = Field(primary_key=True)
     title: str
 
-class xf_nf_rosters_roster_position(SQLModel, table=True):
+class XfNfRostersRosterPosition(SQLModel, table=True):
+    __tablename__ = 'xf_nf_rosters_roster_position'
     roster_id: int = Field(primary_key=True)
     position_id: int
 
-class xf_nf_rosters_service_record(SQLModel, table=True):
+class XfNfRostersServiceRecord(SQLModel, table=True):
+    __tablename__ = 'xf_nf_rosters_service_record'
     record_id: int = Field(primary_key=True)
     relation_id: int
     details: str
@@ -65,7 +77,8 @@ class xf_nf_rosters_service_record(SQLModel, table=True):
     citation_date: int
     record_type_id: int
 
-class xf_nf_rosters_user_award(SQLModel, table=True):
+class XfNfRostersUserAward(SQLModel, table=True):
+    __tablename__ = 'xf_nf_rosters_user_award'
     record_id: int = Field(primary_key=True)
     relation_id: int
     award_id: int
